@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>My Attendance</h1>
+<div class="card">
+<table>
+<tr><th>Course</th><th>Date</th><th>Status</th></tr>
+{% for r in records %}
+<tr><td>{{ r.course }}</td><td>{{ r.date }}</td>
+<td><span class="badge {{ 'good' if r.status=='Present' else 'bad' }}">{{ r.status }}</span></td></tr>
+{% else %}<tr><td colspan="3">No attendance records found.</td></tr>{% endfor %}
+</table>
+</div>
+{% endblock %}

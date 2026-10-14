@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Security Dashboard</h1>
+<p class="muted">Institutional attendance and access overview</p>
+<div class="grid">
+  <div class="stat"><span>Attendance Records</span><b>{{ total }}</b></div>
+  <div class="stat"><span>Present</span><b>{{ present }}</b></div>
+  <div class="stat"><span>Absent</span><b>{{ absent }}</b></div>
+  <div class="stat"><span>Access Attempts</span><b>{{ access_total }}</b></div>
+  <div class="stat danger"><span>Denied Attempts</span><b>{{ denied }}</b></div>
+</div>
+<div class="card">
+<h2>Recent Security Activity</h2>
+<table>
+<tr><th>User</th><th>Resource</th><th>Action</th><th>Result</th><th>Time</th></tr>
+{% for r in recent %}
+<tr>
+<td>{{ r.full_name }}</td><td>{{ r.resource }}</td><td>{{ r.action }}</td>
+<td><span class="badge {{ 'good' if r.result=='GRANTED' else 'bad' }}">{{ r.result }}</span></td>
+<td>{{ r.timestamp }}</td>
+</tr>
+{% else %}
+<tr><td colspan="5">No activity yet.</td></tr>
+{% endfor %}
+</table>
+</div>
+{% endblock %}

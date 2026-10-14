@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Access Control Check</h1>
+<p class="muted">The system checks the current user's role before granting resource access.</p>
+<div class="card narrow">
+<form method="post">
+<label>Select resource</label>
+<select name="resource" required>
+<option value="">Choose...</option>
+<option>Classroom</option>
+<option>Computer Lab</option>
+<option>Cybersecurity Lab</option>
+<option>Administration Office</option>
+</select>
+<button type="submit">Check Access</button>
+</form>
+{% if result %}
+<div class="result {{ 'result-good' if result[0]=='GRANTED' else 'result-bad' }}">
+  <h2>ACCESS {{ result[0] }}</h2>
+  <p>{{ result[1] }}</p>
+</div>
+{% endif %}
+</div>
+{% endblock %}

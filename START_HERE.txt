@@ -1,0 +1,24 @@
+SECUREATTEND - PRESENTATION COPY
+
+This package contains the Project 1 files needed to run the college demonstration locally.
+
+QUICK START (Windows PowerShell)
+1. Open PowerShell in this folder.
+2. Check that Python is installed: python --version
+3. Create the virtual environment: python -m venv venv
+4. Activate it: .\venv\Scripts\Activate.ps1
+5. Install dependencies: pip install -r requirements.txt
+6. Start the application: python app.py
+7. Open in Chrome: http://127.0.0.1:5000
+
+DEMO ACCOUNTS
+Student: student1 / student123
+Faculty: faculty1 / faculty123
+Admin: admin / admin123
+
+The included secure_attendance.db is the database file from the project working copy, so the existing demonstration records are retained.
+
+IMPORTANT
+- Do not delete secure_attendance.db before the presentation if you want the existing demo records.
+- Do not upload the database or demo passwords to a public repository.
+- This is a local college demonstration; it is not a production deployment.

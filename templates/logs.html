@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Audit Logs</h1>
+<p class="muted">Recorded security and attendance-related actions.</p>
+<div class="card">
+<table>
+<tr><th>User</th><th>Role</th><th>Resource</th><th>Action</th><th>Result</th><th>Reason</th><th>Time</th></tr>
+{% for l in logs %}
+<tr><td>{{ l.full_name }}</td><td>{{ l.role }}</td><td>{{ l.resource }}</td>
+<td>{{ l.action }}</td><td><span class="badge {{ 'good' if l.result=='GRANTED' else 'bad' }}">{{ l.result }}</span></td>
+<td>{{ l.reason }}</td><td>{{ l.timestamp }}</td></tr>
+{% else %}<tr><td colspan="7">No audit records.</td></tr>{% endfor %}
+</table>
+</div>
+{% endblock %}

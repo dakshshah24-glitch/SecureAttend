@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Attendance Management</h1>
+<div class="card">
+<form method="post" class="form-grid">
+<div><label>Student</label>
+<select name="student_id" required>
+{% for s in students %}<option value="{{ s.id }}">{{ s.full_name }} ({{ s.username }})</option>{% endfor %}
+</select></div>
+<div><label>Course / Class</label><input name="course" required placeholder="Software Engineering"></div>
+<div><label>Date</label><input type="date" name="date"></div>
+<div><label>Status</label><select name="status"><option>Present</option><option>Absent</option></select></div>
+<div><button type="submit">Record Attendance</button></div>
+</form>
+</div>
+<div class="card">
+<h2>Attendance Records</h2>
+<table>
+<tr><th>Student</th><th>Course</th><th>Date</th><th>Status</th><th>Marked By</th></tr>
+{% for r in records %}
+<tr><td>{{ r.student_name }}</td><td>{{ r.course }}</td><td>{{ r.date }}</td>
+<td><span class="badge {{ 'good' if r.status=='Present' else 'bad' }}">{{ r.status }}</span></td>
+<td>{{ r.marked_by_name }}</td></tr>
+{% else %}<tr><td colspan="5">No attendance records.</td></tr>{% endfor %}
+</table>
+</div>
+{% endblock %}

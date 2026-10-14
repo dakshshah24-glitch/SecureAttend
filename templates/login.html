@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="login-wrap">
+  <div class="card login-card">
+    <h1>SecureAttend</h1>
+    <p class="muted">Secure Digital Attendance and Access System</p>
+    <form method="post">
+      <label>Username</label>
+      <input name="username" required placeholder="Enter username">
+      <label>Password</label>
+      <input name="password" type="password" required placeholder="Enter password">
+      <button type="submit">Sign In</button>
+    </form>
+    <div class="demo-box">
+      <b>Demo accounts</b><br>
+      Student: student1 / student123<br>
+      Faculty: faculty1 / faculty123<br>
+      Admin: admin / admin123
+    </div>
+  </div>
+</div>
+{% endblock %}
